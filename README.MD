@@ -155,7 +155,7 @@ aws_secret_access_key = replace/K7MDENG/bPxRfiCYEXAMPLEKEY
 aws_session_token = replace
 ```
 
-- Verify the cli is install
+- ✅ `3.2.c` -Verify the cli is install
 
 ```bash
 aws --version
@@ -175,35 +175,9 @@ access_key     ****************JR3H shared-credentials-file
 secret_key     ****************c319 shared-credentials-file    
 ```
 
+### 3.3 Init Terraform
 
-
-### 3.3 Change `providers.tf`
-
-- ✅ Access proper folder
-
-```
-de terraform-datastax.ai-stack
-cd demo
-```
-
-
-
-- ✅ Update `providers.tf` as follows
-
-```typesafe
-provider "astra" {
-  token = "YOUR_TOKEN"
-}
-
-provider "aws" {
-  region     = "us-west-2"
-  access_key = "KEY"
-  secret_key = "SECRET"
-  #profile = var.aws_profile
-}
-```
-
-- ✅ Update `terraform.tf` as follows (filtering only AWS)
+- ✅ `3.3.a` -Update `terraform.tf` as follows (filtering only AWS)
 
 ```typesafe
 terraform {
@@ -220,16 +194,25 @@ terraform {
 }
 ```
 
-- ✅ Update `output.tf` as follows (selecting AWS)
+
+- ✅ `3.3.b` -Update `input.tf` as follows (selecting AWS)
 
 ```console
-output "datastax-ai-stack-aws" {
-   value     = module.datastax-ai-stack-aws
-   sensitive = true
+variable "astra_token" {
+  type = string
+}
+
+variable "aws_profile" {
+  type     = string
+  nullable = true
+  default  = null
 }
 ```
 
+- ✅ `3.3.c` -Access proper folder
+
 ```bash
+cd demo-aws
 terraform init
 ```
 
