@@ -140,10 +140,41 @@ curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
 $ sudo installer -pkg AWSCLIV2.pkg -target /
 ```
 
-- ✅ `3.2.b` - Setup AWS CLI
+- ✅ `3.2.b` - Setup AWS CLI (short term)
+
+```bash
+touch ~/.aws/credentials
+vi ~/.aws/credentials
+```
+- Populate the configuration file with your credentials
+
+```ini
+[default] 
+aws_access_key_id = replace 
+aws_secret_access_key = replace/K7MDENG/bPxRfiCYEXAMPLEKEY
+aws_session_token = replace
+```
+
+- Verify the cli is install
+
+```bash
+aws --version
+```
+
+- Configure your profile
 
 ```
+aws configure list --profile default
 ```
+
+```
+      Name                    Value             Type    Location
+      ----                    -----             ----    --------
+   profile                  default                  manual    --profile
+access_key     ****************JR3H shared-credentials-file    
+secret_key     ****************c319 shared-credentials-file    
+```
+
 
 
 ### 3.3 Change `providers.tf`
@@ -154,6 +185,8 @@ $ sudo installer -pkg AWSCLIV2.pkg -target /
 de terraform-datastax.ai-stack
 cd demo
 ```
+
+
 
 - ✅ Update `providers.tf` as follows
 
