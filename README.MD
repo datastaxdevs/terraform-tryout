@@ -75,25 +75,25 @@ brew install datastax/astra-cli/astra-cli
 > symbolic link to `/usr/local/bin/astra`. The configuration of the CLI is 
 > stored in `~/.astrarc` - **It is not lost on updates
 
-- ✅ `2.2.e` Issue `setup` command and provide your token as an input. It must start by `AstraCS:...`. Make sure to have the `Organization Administrator` role to avoid any permission limitations later on.
+- ✅ `2.2.e` - Issue `setup` command and provide your token as an input. It must start by `AstraCS:...`. Make sure to have the `Organization Administrator` role to avoid any permission limitations later on.
 
 ```sh
 astra setup --token AstraCS...
 ```
 
-- ✅ `2.2.f`Display your local configuration list, validating setup is complete. 
+- ✅ `2.2.f` - Display your local configuration list, validating setup is complete. 
 
 ```bash
 astra config list
 ```
 
-- ✅ `2.2.g`Create a `vector database` with the CLI
+- ✅ `2.2.g` - Create a `vector database` with the CLI
 
 ```bash
 astra db create terraform_demo --vector --async
 ```
 
-- ✅ You can see it pending with 
+- ✅ `2.2.h` - You can see it pending with 
 
 ```bash
 astra db list
@@ -117,22 +117,36 @@ git clone git@github.com:datastax/terraform-datastax-ai-stack.git
 
 ![imgs/aws-03.png](imgs/aws-03.png)
 
-### 3.a AWS Credentials
+### 3.1 AWS Credentials
 
-- ✅ Access the Idenity and Access Management console (IAM) in AWS
+- ✅ `3.1.a` - Access the Idenity and Access Management console (IAM) in AWS
 
-- ✅ Create a an User with AWS and add the different permissions. 
+- ✅ `3.1.b` - Create a an User with AWS and add the different permissions. 
 
-- ✅ For this user create a pair of keys wih `access_key` and `secret_key` as follows:
+- ✅ `3.1.c` - For this user create a pair of keys wih `access_key` and `secret_key` as follows:
 
 ![imgs/aws-01.png](imgs/aws-01.png)
 
-- Setup the access for an application outside
+- ✅ `3.1.d` - Setup the access for an application outside
 
 ![imgs/aws-02.png](imgs/aws-02.png)
 
+### 3.2 AWS CLI
 
-### 3.b Change `providers.tf`
+- ✅ `3.2.a` - Installing AWS CLI
+
+```bash
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+$ sudo installer -pkg AWSCLIV2.pkg -target /
+```
+
+- ✅ `3.2.b` - Setup AWS CLI
+
+```
+```
+
+
+### 3.3 Change `providers.tf`
 
 - ✅ Access proper folder
 
