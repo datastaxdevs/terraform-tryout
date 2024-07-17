@@ -5,13 +5,13 @@
 
 1. [Overview](#1-overview)
 2. [Installation and Prerequisites](#2-installation-and-prerequisites)
-3. AWS Deployments
-4. Deploy on GCP
-5. Deploy on AZURE
+3. [AWS Deployments]()
+4. [GCP Deployments]()
+5. [Azure Deployments]()
 
 ## 1. Overview
 
-This provide allows to create the Astra Vector.
+Terraform module which helps you quickly deploy an opinionated AI/RAG stack to AWS, provided by Datastax.
 
 ## 2. Installation and Prerequisites
 
@@ -115,6 +115,8 @@ git clone git@github.com:datastax/terraform-datastax-ai-stack.git
 
 ## 3. AWS Deployment
 
+![imgs/aws-03.png](imgs/aws-03.png)
+
 ### 3.a AWS Credentials
 
 - ✅ Access the Idenity and Access Management console (IAM) in AWS
@@ -180,7 +182,6 @@ output "datastax-ai-stack-aws" {
 }
 ```
 
-
 ```bash
 terraform init
 ```
@@ -189,7 +190,11 @@ terraform init
 terraform plan
 ```
 
+```bash
+terraform apply
+```
 
+## 4. GCP Deployment
 
+## 5. AZURE Deployment
 
-## 2. Terraform Installation
