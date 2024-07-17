@@ -20,7 +20,7 @@ module "datastax-ai-stack-aws" {
    }
 
    vector_dbs = [{
-     name      = "my_db"
-     keyspaces = ["main_keyspace", "other_keyspace"]
+     name      = "terraform_demo"
+     keyspaces = ["default_keyspace"]
    }]
  }

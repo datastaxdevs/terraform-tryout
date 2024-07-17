@@ -3,8 +3,8 @@
 
 ## Table of content
 
-1. Overview
-2. Installation and Prerequisites
+1. [Overview](#1-overview)
+2. [Installation and Prerequisites](#2-installation-and-prerequisites)
 3. AWS Deployments
 4. Deploy on GCP
 5. Deploy on AZURE
@@ -15,32 +15,31 @@ This provide allows to create the Astra Vector.
 
 ## 2. Installation and Prerequisites
 
-### 2.a - Terraform Installation
+### 2.1 - Terraform Installation
 
 > Note: Check [Terraform Documentation](https://developer.hashicorp.com/terraform/install)
 
-- Open the Terminal application on your macOS.
 
-- **Update Homebrew**: Before installing any new package, it's good practice to update Homebrew:
+- ✅ `2.1.a` **Update Homebrew**: Before installing any new package, it's good practice to update Homebrew:
 
 ```sh
 brew update
 ```
 
-- **Install Terraform**: To install Terraform using Homebrew, run the following command:
+- ✅ `2.1.b` **Install Terraform**: To install Terraform using Homebrew, run the following command:
 
 ```sh
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 ```
 
-- **Verification**; After the installation completes, verify that Terraform is installed correctly by checking its version:
+- ✅ `2.1.c` **Verification**; After the installation completes, verify that Terraform is installed correctly by checking its version:
 
 ```sh
 terraform -v
 ```
 
-### 2.b - Astra CLI Installation
+### 2.2 - Astra CLI Installation
 
 Astra CLI is a command-line interface (CLI) tool that enables users to interact with and manage the 
 Astra database-as-a-service platform. It provides developers with a streamlined way to create, configure, and 
@@ -49,23 +48,23 @@ manipulate databases, making it easier to integrate Astra into their application
 Astra CLI goes beyond basic database management by facilitating the seamless integration of external tools like **dsbulk**, 
 **cqlsh**, and **pulshar-shell** or by providing useful shortcuts like **dotenv** file generation.
 
-- ✅ **Update Homebrew**: Before installing any new package, it's good practice to update Homebrew:
+- ✅ `2.2.a` **Update Homebrew**: Before installing any new package, it's good practice to update Homebrew:
 
 ```sh
 brew update
 ```
 
-- ✅ **Install Astra CLI**: To install Terraform using Homebrew, run the following command:
+- ✅ `2.2.b` **Install Astra CLI**: To install Terraform using Homebrew, run the following command:
 
 ```sh
 brew install datastax/astra-cli/astra-cli
 ```
 
-- ✅ Connect to [https://astra.datastax.com](https://astra.datastax.com)
+- ✅ `2.2.c` Connect to [https://astra.datastax.com](https://astra.datastax.com)
 
 ![imgs/01-login.png](imgs/01-login.png)
 
-- ✅ Navigate to token and generate a token with `Organization Administrator` permissions and copy the token starting by `AstraCS:...`
+- ✅ `2.2.d` Navigate to token and generate a token with `Organization Administrator` permissions and copy the token starting by `AstraCS:...`
 
 ![imgs/02-token.png](imgs/02-token.png)
 
@@ -76,19 +75,19 @@ brew install datastax/astra-cli/astra-cli
 > symbolic link to `/usr/local/bin/astra`. The configuration of the CLI is 
 > stored in `~/.astrarc` - **It is not lost on updates
 
-- ✅ Issue `setup` command and provide your token as an input. It must start by `AstraCS:...`. Make sure to have the `Organization Administrator` role to avoid any permission limitations later on.
+- ✅ `2.2.e` Issue `setup` command and provide your token as an input. It must start by `AstraCS:...`. Make sure to have the `Organization Administrator` role to avoid any permission limitations later on.
 
 ```sh
 astra setup --token AstraCS...
 ```
 
-- ✅ Display your local configuration list, validating setup is complete. 
+- ✅ `2.2.f`Display your local configuration list, validating setup is complete. 
 
 ```bash
 astra config list
 ```
 
-- ✅ Create a `vector database` with the CLI
+- ✅ `2.2.g`Create a `vector database` with the CLI
 
 ```bash
 astra db create terraform_demo --vector --async
