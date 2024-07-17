@@ -4,6 +4,4 @@ variable "astra_token" {
 
 variable "aws_profile" {
   type     = string
-  nullable = true
-  default  = null
 }

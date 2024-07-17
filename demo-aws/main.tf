@@ -1,5 +1,5 @@
 module "datastax-ai-stack-aws" {
-   source = "../aws"
+   source = "./aws"
 
    domain_config = {
      auto_route53_setup = true

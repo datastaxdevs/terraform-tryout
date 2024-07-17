@@ -164,6 +164,7 @@ aws --version
 - Configure your profile
 
 ```
+aws configure list-profiles
 aws configure list --profile default
 ```
 
@@ -195,7 +196,7 @@ terraform {
 ```
 
 
-- ✅ `3.3.b` -Update `input.tf` as follows (selecting AWS)
+- ✅ `3.3.b` - Update `input.tf` as follows (selecting AWS)
 
 ```console
 variable "astra_token" {
@@ -209,16 +210,72 @@ variable "aws_profile" {
 }
 ```
 
-- ✅ `3.3.c` -Access proper folder
+- ✅ `3.3.c` - Initialization
 
 ```bash
 cd demo-aws
 terraform init
 ```
 
+Output
+```
+Initializing the backend...
+Initializing modules...
+- datastax-ai-stack-aws in aws
+- datastax-ai-stack-aws.assistants in aws/modules/assistants
+- datastax-ai-stack-aws.assistants.assistants_api_db in aws/modules/astra_db
+- datastax-ai-stack-aws.assistants.ecs_deployment in aws/modules/ecs_deployment
+- datastax-ai-stack-aws.aws_infra in aws/modules/aws_infra
+Downloading registry.terraform.io/terraform-aws-modules/alb/aws 9.9.0 for datastax-ai-stack-aws.aws_infra.alb...
+- datastax-ai-stack-aws.aws_infra.alb in .terraform/modules/datastax-ai-stack-aws.aws_infra.alb
+Downloading registry.terraform.io/terraform-aws-modules/ecs/aws 5.11.3 for datastax-ai-stack-aws.aws_infra.ecs...
+- datastax-ai-stack-aws.aws_infra.ecs in .terraform/modules/datastax-ai-stack-aws.aws_infra.ecs
+- datastax-ai-stack-aws.aws_infra.ecs.cluster in .terraform/modules/datastax-ai-stack-aws.aws_infra.ecs/modules/cluster
+- datastax-ai-stack-aws.aws_infra.ecs.service in .terraform/modules/datastax-ai-stack-aws.aws_infra.ecs/modules/service
+- datastax-ai-stack-aws.aws_infra.ecs.service.container_definition in .terraform/modules/datastax-ai-stack-aws.aws_infra.ecs/modules/container-definition
+Downloading registry.terraform.io/terraform-aws-modules/vpc/aws 5.8.1 for datastax-ai-stack-aws.aws_infra.vpc...
+- datastax-ai-stack-aws.aws_infra.vpc in .terraform/modules/datastax-ai-stack-aws.aws_infra.vpc
+- datastax-ai-stack-aws.langflow in aws/modules/langflow
+- datastax-ai-stack-aws.langflow.ecs_deployment in aws/modules/ecs_deployment
+- datastax-ai-stack-aws.vector_dbs in aws/modules/astra_db
+Initializing provider plugins...
+- Finding datastax/astra versions matching "~> 2.3.3"...
+- Finding hashicorp/aws versions matching ">= 4.66.1, >= 5.30.0, >= 5.46.0, ~> 5.47.0"...
+- Installing datastax/astra v2.3.6...
+- Installed datastax/astra v2.3.6 (signed by a HashiCorp partner, key ID 0ABDBFC051FFB5D5)
+- Installing hashicorp/aws v5.47.0...
+- Installed hashicorp/aws v5.47.0 (signed by HashiCorp)
+Partner and community providers are signed by their developers.
+If you'd like to know more about provider signing, you can read about it here:
+https://www.terraform.io/docs/cli/plugins/signing.html
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+```
+
 ```bash
 terraform plan
 ```
+
+```
+var.astra_token
+  Enter a value: AstraCS:XXXXXXXX
+
+var.aws_profile
+  Enter a value: default
+```
+
 
 ```bash
 terraform apply
